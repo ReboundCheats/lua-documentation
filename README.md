@@ -10,7 +10,7 @@ To call a native, simply take its namespace, add an underscore, and then its nam
 
 ```lua
 function get_local_ped()
-   return ped = PLAYER_GET_PLAYER_PED_SCRIPT_INDEX(PLAYER_PLAYER_ID())
+   return PLAYER_GET_PLAYER_PED_SCRIPT_INDEX(PLAYER_PLAYER_ID())
 end
 ```
 
