@@ -217,6 +217,7 @@ TRAIN = 13,
 ```
 
 Types of net events (they start at 0, with OBJECT_ID_FREED_EVENT being 0, and increment by one per-line):
+Credit to Fivem for these.
 ```lua
 OBJECT_ID_FREED_EVENT,
 OBJECT_ID_REQUEST_EVENT,
