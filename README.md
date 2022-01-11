@@ -25,6 +25,8 @@ The stock LUA libraries rebound implements are:
 - os
 - math 
 
+**You need to be really careful about what scripts you run.**
+
 ## Logging
 ```lua
 -- Logs a message to the rebound console.
@@ -79,7 +81,7 @@ void trigger_script_event(int player_index, int arguments_amount, int[] argument
 ```
 
 ## Input
-You can use these APIs to gather input information
+You can use these APIs to gather input information.
 
 ```lua
 -- Returns true if a virtual key code is being pressed
@@ -101,7 +103,7 @@ void send_chat_message(message)
 ```
 
 ## Menu
-You can use these APIs to add features to the menu
+You can use these APIs to add features to the menu.
 
 ```lua
 -- Adds a feature to the "Script Features" submenu of network players.
