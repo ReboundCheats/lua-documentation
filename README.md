@@ -85,6 +85,7 @@ You can use these APIs to gather input information.
 
 ```lua
 -- Returns true if a virtual key code is being pressed
+-- You can find virtual key codes here: https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
 bool is_key_pressed(virtual_key_code)
 -- Pops up the game keyboard to gather input
 string get_keyboard_input()
@@ -311,7 +312,7 @@ NETWORK_CHECK_CATALOG_CRC,
 ```
 
 ## Example
-Here's an example that uses just about everything the api has to offer, including an example of an infinite loop that can end at the press of a button.
+Here's an example that uses just about everything the api has to offer, including an example of an infinite loop that can end at the press of a button, a script event hook to log all script events, and a few examples on how to add features to the menu.
 
 ```lua
 function print_position(index)
