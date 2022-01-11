@@ -1,6 +1,6 @@
 ## Introduction
 
-The Rebound LUA API, unlike all other LUA apis, implements 99% of the game's natives.
+The Rebound LUA API, unlike all other LUA apis, implements 99% of the game's natives. It is a lot more extensive, meaning you can write **full menu bases** with it.
 
 If you want to find documentation on a game native, you're gonna have to browse: http://www.dev-c.com/nativedb/
 
