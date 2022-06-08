@@ -95,6 +95,14 @@ bool is_key_pressed(virtual_key_code)
 string get_keyboard_input()
 ```
 
+## Output
+You can use these APIs to send information to the player.
+
+```lua
+-- This will send a notification using Rebound's custom notifications framework.
+void notify(title, content)
+```
+
 ## Network
 You can use these APIs to interact with network players.
 
