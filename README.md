@@ -1,6 +1,6 @@
 ## Introduction
 
-The Rebound LUA API, unlike most other LUA apis, implements 99% of the game's natives. It is a lot more extensive, meaning you can write **full menu bases** with it.
+The MENU_NAME LUA API, unlike most other LUA apis, implements 99% of the game's natives. It is a lot more extensive, meaning you can write **full menu bases** with it.
 
 If you want to find documentation on a game native, you're gonna have to browse: http://www.dev-c.com/nativedb/
 
@@ -15,10 +15,10 @@ end
 ```
 
 ## Documentation
-Now on to the actual Rebound API that exposes the menu's functions so that you may add features or do things that the natives won't let you do.
+Now on to the actual MENU_NAME API that exposes the menu's functions so that you may add features or do things that the natives won't let you do.
 
 ## Stock LUA libraries
-The stock LUA libraries rebound implements are:
+The stock LUA libraries MENU_NAME implements are:
 - base
 - string
 - io
@@ -29,9 +29,9 @@ The stock LUA libraries rebound implements are:
 
 ## Logging
 ```lua
--- Logs a message to the rebound console.
+-- Logs a message to the MENU_NAME console.
 void log_info(message)
--- Logs an error to the rebound console.
+-- Logs an error to the MENU_NAME console.
 void log_error(message)
 ```
 
@@ -78,6 +78,10 @@ void set_local_int(script_hash, index)
 void set_local_float(script_hash, index)
 -- Sends a script event to another player (First argument must be the event, other arguments are the event's parameters)
 void trigger_script_event(int player_index, int arguments_amount, int[] arguments)
+-- Gets the index of the current session host.
+int get_session_host()
+-- Checks if the player at the given index is the session host
+bool is_session_host(index)
 ```
 
 ## Input
@@ -133,7 +137,7 @@ void add_function(submenu, name, feature)
 -- time the toggle is on.
 void add_toggle_function(submenu, name, feature)
 
--- Registers a function to be called every time rebound
+-- Registers a function to be called every time MENU_NAME
 -- receives a script event.
 --
 -- Return false to deny the event, return true to let it through.
@@ -153,7 +157,7 @@ void add_toggle_function(submenu, name, feature)
 -- 
 void add_script_event_callback(hook)
 
--- Registers a function to be called every time rebound
+-- Registers a function to be called every time MENU_NAME
 -- receives a net event.
 --
 -- Return false to deny the event, return true to let it through.
@@ -169,7 +173,7 @@ void add_script_event_callback(hook)
 -- 
 void add_net_event_callback(hook)
 
--- Registers a function to be called every time rebound
+-- Registers a function to be called every time MENU_NAME
 -- receives an object sync.
 --
 -- Return false to deny the sync, return true to let it through.
@@ -184,6 +188,20 @@ void add_net_event_callback(hook)
 -- end
 -- 
 void add_object_callback(hook)
+
+-- Registers a function to be called every time MENU_NAME
+-- receives a message in the game's chat.
+--
+-- You can build custom chat filters with this, or your own
+-- implementation of chat commands.
+-- 
+-- Example function:
+--
+-- function chat_hook(player_index, message)
+--   log_info(message) -- Logs the message that was sent in the game's chat
+-- end
+--
+void add_chat_callback(hook)
 ```
 
 ## Natives
@@ -326,7 +344,7 @@ end
 
 function print_hello()
     -- No need to check whether the feature is on or off, this is only
-    -- called when it's on, Rebound handles that for you.
+    -- called when it's on, MENU_NAME handles that for you.
     log_info("Hello")
 end
 
