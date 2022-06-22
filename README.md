@@ -154,10 +154,7 @@ void add_toggle_function(submenu, name, feature)
 --
 -- Example function that prints all event IDs received:
 -- 
--- function script_event_hook(player_index, event_parameters, amount_of_parameters) 
---     event_id = event_parameters[1]
---     target = event_parameters[2] -- Usually equal to PLAYER_PLAYER_ID
---     -- The maximum parameter you can acess is event_parameters[amount_of_parameters]
+-- function script_event_hook(event_id, raw_event_parameters, amount_of_parameters, sender_index) 
 --     log_info(event_id)
 --     -- return false to stop the event from getting receieved, true lets it through
 --     return true
