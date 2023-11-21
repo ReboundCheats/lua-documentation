@@ -480,22 +480,55 @@ entity:set_health(0)
 uint64_t allocate_memory(uint64_t size)
 -- Frees a block of memory given the address
 void free_memory(uint64_t address)
--- Writes a byte to a given address.
-void write_byte(address, byte)
--- Reads a byte at a given address.
-byte read_byte(address)
--- Writes an int to a given address.
-void write_int(address, integer)
--- Reads an int from a given address.
-int read_int(address)
--- Writes a float to a given address.
-void write_float(address, floating)
--- Reads a float from a given address.
-float read_float(address)
--- Writes a bool to a given address.
-void write_bool(address, boolean)
--- Reads a bool from a given address.
-void read_bool(address)
+
+-- Writes a byte to the specified module at a given offset.
+-- moduleName: string, the name of the module
+-- offset: uint32_t, the offset from the module base address
+-- value: byte, the value to be written
+void write_byte(string moduleName, uint32_t offset, uint8_t value)
+
+-- Reads a byte from the specified module at a given offset.
+-- moduleName: string, the name of the module
+-- offset: uint32_t, the offset from the module base address
+-- return: byte, the value read from the address
+byte read_byte(string moduleName, uint32_t offset)
+
+-- Writes an int to the specified module at a given offset.
+-- moduleName: string, the name of the module
+-- offset: uint32_t, the offset from the module base address
+-- value: integer, the value to be written
+void write_int(string moduleName, uint32_t offset, int value)
+
+-- Reads an int from the specified module at a given offset.
+-- moduleName: string, the name of the module
+-- offset: uint32_t, the offset from the module base address
+-- return: int, the value read from the address
+int read_int(string moduleName, uint32_t offset)
+
+-- Writes a float to the specified module at a given offset.
+-- moduleName: string, the name of the module
+-- offset: uint32_t, the offset from the module base address
+-- value: floating, the value to be written
+void write_float(string moduleName, uint32_t offset, float value)
+
+-- Reads a float from the specified module at a given offset.
+-- moduleName: string, the name of the module
+-- offset: uint32_t, the offset from the module base address
+-- return: float, the value read from the address
+float read_float(string moduleName, uint32_t offset)
+
+-- Writes a bool to the specified module at a given offset.
+-- moduleName: string, the name of the module
+-- offset: uint32_t, the offset from the module base address
+-- value: boolean, the value to be written
+void write_bool(string moduleName, uint32_t offset, bool value)
+
+-- Reads a bool from the specified module at a given offset.
+-- moduleName: string, the name of the module
+-- offset: uint32_t, the offset from the module base address
+-- return: bool, the value read from the address
+bool read_bool(string moduleName, uint32_t offset)
+
 -- Returns the game's base (So you can use offsets)
 uint64 get_game_base()
 ```
@@ -650,6 +683,12 @@ uint64_t handle_to_ptr(int entity)
 
 ## Threading
 ```lua
+-- Registers a function to be called before the script is unloaded
+void register_on_unload(function);
+
+-- Registers a function to be called on tick in the menu's fiber pools
+void register_on_tick(function);
+
 -- Start a new fiber to run your code in, remember to SYSTEM_WAIT() at the end of every while (true) loop.
 void create_fiber(function);
 
