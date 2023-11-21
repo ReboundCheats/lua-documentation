@@ -62,8 +62,21 @@ These classes will generally take an entity that already exists (a ped, a vehicl
 # Vector3
 ```lua
 Vector3 Vector3.new(float x, float y, float z)
-Vector3 construct_vector3(address)
-address allocate_vector3()
+Vector3 construct_vector3(w_u64)
+w_u64 allocate_vector3()
+```
+
+
+# w_u64
+Lua does not support 64-bit integers out the box, so Rebound wraps around it cleanly.
+```lua
+-- Constructs a new w_u64 object from a string representing a 64-bit unsigned integer.
+-- If the string is not a valid representation, the value is set to 0 and an error is logged.
+w_u64 w_u64.new(string)
+
+-- Prints the value of the w_u64 object.
+-- Useful for debugging or logging the current value stored in the object.
+void w_u64:print()
 ```
 
 # entity_t
@@ -477,9 +490,9 @@ entity:set_health(0)
 ## Memory
 ```lua
 -- Allocates a block of memory with the relative size
-uint64_t allocate_memory(uint64_t size)
+w_u64 allocate_memory(uint32_t size)
 -- Frees a block of memory given the address
-void free_memory(uint64_t address)
+void free_memory(w_u64 address)
 
 -- Writes a byte to the specified module at a given offset.
 -- moduleName: string, the name of the module
@@ -678,7 +691,7 @@ table get_all_entities(float range, Vector3 coordinates)
 
 -- Will take any raw entity as parameter (Vehicle / Ped / Object / Entity) and will return the raw pointer to the
 -- in-memory representation of the entity. Useful for advanced scripts modifying fields in entity classes.
-uint64_t handle_to_ptr(int entity)
+w_u64 handle_to_ptr(int entity)
 ```
 
 ## Threading
